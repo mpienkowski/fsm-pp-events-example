@@ -1,8 +1,8 @@
 {
-  "name": "Service Call UDF",
+  "name": "PP Events Example",
   "provider": "SAP FSM",
-  "description": "Sample extension to demo data fetch using a frontend only architecture",   
+  "description": "Sample extension to demo events communication with PP",
   "version": "1.0.0", 
-  "icon": "https://mpienkowski.github.io/fsm-udf-plugin-sample/icon.png",
-  "optimalHeight": "130px"
+  "icon": "https://mpienkowski.github.io/fsm-pp-events-example/icon.png",
+  "optimalHeight": "250px"
 }
