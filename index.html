@@ -20,13 +20,14 @@
     // Import ShellSDK and events list from FSMShell global variable
     // see https://github.com/SAP/fsm-shell for more details.
     const {ShellSdk, SHELL_EVENTS} = FSMShell;
+    let shellSdk;
 
     // Display an error message if extension does not run within shell
     if (!ShellSdk.isInsideShell()) {
         displayMessage('Unable to reach shell eventAPI');
     } else {
         // Initialise ShellSDK to connect with parent shell library
-        const shellSdk = ShellSdk.init(parent, '*');
+        shellSdk = ShellSdk.init(parent, '*');
         let pluginId;
 
         // Initialise the extension by requesting the fsm context
