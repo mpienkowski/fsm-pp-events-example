@@ -9,8 +9,11 @@
           rel="stylesheet">
 </head>
 <body>
+<div>
+    <label for="requiredInput">Required input</label>
+    <input id="requiredInput" required type="text">
+</div>
 <div id="messageContainer"></div>
-<div id="container"></div>
 <script src="https://unpkg.com/fsm-shell"></script>
 <script src="helpers.js"></script>
 <script>
@@ -54,6 +57,7 @@
             shellSdk.onViewState('pluginId', receivedPluginId => {
                 pluginId = receivedPluginId
                 displayMessage(`Received plugin id: ${pluginId}`);
+                initInputValidation(pluginId);
             });
 
             shellSdk.onViewState('technician', technician => {
@@ -67,7 +71,7 @@
                     displayMessage(`Saving plugin state...`);
                     setTimeout(
                         () => {
-                            displayMessage(`Saved plugin state`);
+                            displayMessage(`Saved plugin state, sending event "Saved"`);
                             shellSdk.emit(
                                 SHELL_EVENTS.Version1.TO_APP,
                                 {

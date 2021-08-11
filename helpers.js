@@ -20,3 +20,23 @@ function displayMessage(message) {
     const messageContainer = document.querySelector('#messageContainer');
     messageContainer.innerText = `${messageContainer.innerText}${message}\n`;
 }
+
+function initInputValidation(pluginId) {
+    const input = document.querySelector('#requiredInput');
+    sendValidationEvent(false, pluginId);
+    input.addEventListener('input', ({target}) => {
+        sendValidationEvent(target.value.length > 0, pluginId);
+    })
+}
+
+function sendValidationEvent(isValid, pluginId) {
+    const eventName = isValid ? 'Valid' : 'Invalid';
+    displayMessage(`Sending event "${eventName}"`);
+    shellSdk.emit(
+        SHELL_EVENTS.Version1.TO_APP,
+        {
+            pluginId,
+            name: eventName,
+        },
+    );
+}
