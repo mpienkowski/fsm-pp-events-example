@@ -59,6 +59,16 @@
                 pluginId = receivedPluginId
                 displayMessage(`Received plugin id: ${pluginId}`);
                 initInputValidation(pluginId);
+
+                displayMessage(`Telling host, that plugin is savable`);
+                shellSdk.emit(
+                    SHELL_EVENTS.Version1.TO_APP,
+                    {
+                        pluginId,
+                        name: 'isSavable',
+                        payload: true,
+                    },
+                );
             });
 
             shellSdk.onViewState('technician', technician => {
